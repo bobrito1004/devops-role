@@ -1,0 +1,5 @@
+---
+# defaults file for docker
+docker_url: https://download.docker.com/linux/ubuntu
+gpg_docker_url: https://download.docker.com/linux/ubuntu/gpg
+system_version: focal stable

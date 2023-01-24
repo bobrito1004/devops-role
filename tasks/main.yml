@@ -1,0 +1,29 @@
+- name: Installing required system packages
+  apt:
+    name:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - software-properties-common
+      - python3-pip
+      - python3-venv
+      - python3-setuptools
+      - python3-docker
+    state: present
+    update_cache: true
+- name: Docker GPG
+  apt_key:
+    url: "{{ gpg_docker_url }}"
+    state: present
+- name: Docker Repo
+  apt_repository:
+    repo: "deb {{ docker_url }} {{ system_version }}"
+    state: present
+- name: install docker-ce
+  apt:
+    name: docker-ce
+    state: present
+    update_cache: true
+- name: install docker python
+  pip:
+    name: docker
